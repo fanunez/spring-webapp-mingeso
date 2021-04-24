@@ -15,7 +15,7 @@ repositories {
 
 sonarqube {
   properties {
-    property "sonar.projectKey", "mingeso"
+    property "sonar.projectKey", "spring-webapp-mingeso"
     property "sonar.organization", "fanunez"
     property "sonar.host.url", "https://sonarcloud.io"
   }
