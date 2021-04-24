@@ -8,7 +8,7 @@ pipeline {
 		}
 		stage('SonarQube analysis') {
     			steps {
-				dir("/var/lib/jenkins/workspace/mingeso") {
+				dir("/var/lib/jenkins/workspace/spring-webapp-mingeso") {
 					withSonarQubeEnv('sonarqube') { // Will pick the global server connection you have configured
 						sh 'chmod +x ./gradlew'
 						sh './gradlew sonarqube'
