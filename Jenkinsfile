@@ -19,8 +19,9 @@ pipeline {
 		stage('JUnit'){
 			steps {
 				dir("/var/lib/jenkins/workspace/Mingeso Proyecto/build/test-results/test") {
-					sh 'touch hola.xml'
-					sh 'rm *.xml'
+					/*sh 'touch hola.xml'
+					sh 'rm *.xml'*/
+					junit '*.xml'
 				}
 				catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                     			dir("/var/lib/jenkins/workspace/Mingeso Proyecto") {

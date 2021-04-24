@@ -29,5 +29,5 @@ public class AdderTest {
         adder.setResult(result);
         assertEquals(-3, adder.getResult());
     }
-    
+
 }
