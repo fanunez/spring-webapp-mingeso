@@ -1,5 +1,5 @@
 package com.app.springwebappmingeso.services;
-import com.app.springwebappmingeso.models.Adder;
+import com.app.springwebappmingeso.models.Calculate;
 import com.google.gson.GsonBuilder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -7,28 +7,26 @@ import org.springframework.web.bind.annotation.*;
 import com.google.gson.Gson;
 
 @RestController
-@RequestMapping("/adder")
+@RequestMapping("/calculate")
 @CrossOrigin(origins = "*")
-public class AdderService {
+public class CalculateService {
 
     private final Gson gson;
 
-    AdderService(){
+    CalculateService(){
         this.gson = new GsonBuilder().setPrettyPrinting().create();
     }
     @PostMapping("/sum")
     public ResponseEntity<String> calculateSum(@RequestBody String request){
-        System.out.println(request);
-        Adder adder = gson.fromJson(request, Adder.class);
-        Integer result = adder.calculateSum(adder.getNumber1(), adder.getNumber2());
-        adder.setResult(result);
-        return new ResponseEntity<>(gson.toJson(adder), HttpStatus.OK);
+        Calculate calculate = gson.fromJson(request, Calculate.class);
+        Integer result = calculate.calculateSum(calculate.getNumber1(), calculate.getNumber2());
+        calculate.setResult(result);
+        return new ResponseEntity<>(gson.toJson(calculate), HttpStatus.OK);
     }
 
     @PostMapping("/subtraction")
     public ResponseEntity<String> calculateSub(@RequestBody String request){
-        System.out.println(request);
-        Adder subtraction = gson.fromJson(request, Adder.class);
+        Calculate subtraction = gson.fromJson(request, Calculate.class);
         Integer result = subtraction.calculateSubtraction(subtraction.getNumber1(), subtraction.getNumber2());
         subtraction.setResult(result);
         return new ResponseEntity<>(gson.toJson(subtraction), HttpStatus.OK);

@@ -1,11 +1,11 @@
 package com.app.springwebappmingeso.models;
 
-public class Adder {
+public class Calculate {
     private Integer number1;
     private Integer number2;
     private Integer result;
 
-    public Adder(Integer number1, Integer number2, Integer result) {
+    public Calculate(Integer number1, Integer number2, Integer result) {
         this.number1 = number1;
         this.number2 = number2;
         this.result = result;
