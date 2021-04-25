@@ -24,4 +24,13 @@ public class AdderService {
         adder.setResult(result);
         return new ResponseEntity<>(gson.toJson(adder), HttpStatus.OK);
     }
+
+    @PostMapping("/subtraction")
+    public ResponseEntity<String> calculateSub(@RequestBody String request){
+        System.out.println(request);
+        Adder subtraction = gson.fromJson(request, Adder.class);
+        Integer result = subtraction.calculateSubtraction(subtraction.getNumber1(), subtraction.getNumber2());
+        subtraction.setResult(result);
+        return new ResponseEntity<>(gson.toJson(subtraction), HttpStatus.OK);
+    }
 }
