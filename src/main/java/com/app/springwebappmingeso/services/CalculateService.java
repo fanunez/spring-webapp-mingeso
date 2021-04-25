@@ -18,17 +18,31 @@ public class CalculateService {
     }
     @PostMapping("/sum")
     public ResponseEntity<String> calculateSum(@RequestBody String request){
-        Calculate calculate = gson.fromJson(request, Calculate.class);
-        Integer result = calculate.calculateSum(calculate.getNumber1(), calculate.getNumber2());
-        calculate.setResult(result);
-        return new ResponseEntity<>(gson.toJson(calculate), HttpStatus.OK);
+        try {
+            Calculate calculate = gson.fromJson(request, Calculate.class);
+            Integer result = calculate.calculateSum(calculate.getNumber1(), calculate.getNumber2());
+            calculate.setResult(result);
+            return new ResponseEntity<>(gson.toJson(calculate), HttpStatus.OK);
+
+        } catch ( Exception e ) {
+            System.out.println( e ); // capturar error server-side
+            return new ResponseEntity<>( gson.toJson("Algo ocurrio mal :("), HttpStatus.BAD_REQUEST );
+        }
+
     }
 
     @PostMapping("/subtraction")
     public ResponseEntity<String> calculateSub(@RequestBody String request){
-        Calculate subtraction = gson.fromJson(request, Calculate.class);
-        Integer result = subtraction.calculateSubtraction(subtraction.getNumber1(), subtraction.getNumber2());
-        subtraction.setResult(result);
-        return new ResponseEntity<>(gson.toJson(subtraction), HttpStatus.OK);
+        try {
+            Calculate subtraction = gson.fromJson(request, Calculate.class);
+            Integer result = subtraction.calculateSubtraction(subtraction.getNumber1(), subtraction.getNumber2());
+            subtraction.setResult(result);
+            return new ResponseEntity<>(gson.toJson(subtraction), HttpStatus.OK);
+
+        } catch ( Exception e ) {
+            System.out.println( e ); // capturar error server-side
+            return new ResponseEntity<>( gson.toJson("Algo ocurrio mal :("), HttpStatus.BAD_REQUEST );
+        }
+
     }
 }
