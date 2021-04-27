@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class CalculateTest {
+class CalculateTest {
     @Test
     void calculateSum_twoNumbers_returnNumber() {
         Calculate calculate = new Calculate(1, 2, null);
