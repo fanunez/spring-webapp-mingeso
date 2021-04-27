@@ -8,8 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CalculateTest {
     @Test
-    @DisplayName("sipo1")
-    public void calculateSum_twoNumbers_returnNumber() {
+    void calculateSum_twoNumbers_returnNumber() {
         Calculate calculate = new Calculate(1, 2, null);
         Integer result = calculate.calculateSum(calculate.getNumber1(), calculate.getNumber2());
         calculate.setResult(result);
@@ -17,8 +16,7 @@ public class CalculateTest {
     }
 
     @Test
-    @DisplayName("sipo2")
-    public void calculateSum_oneNegativeNumber_returnNumber() {
+    void calculateSum_oneNegativeNumber_returnNumber() {
         Calculate calculate = new Calculate(1, -2, null);
         Integer result = calculate.calculateSum(calculate.getNumber1(), calculate.getNumber2());
         calculate.setResult(result);
@@ -26,8 +24,7 @@ public class CalculateTest {
     }
 
     @Test
-    @DisplayName("sipo3")
-    public void calculateSum_twoNegativeNumbers_returnNumber() {
+    void calculateSum_twoNegativeNumbers_returnNumber() {
         Calculate calculate = new Calculate(-1, -2, null);
         Integer result = calculate.calculateSum(calculate.getNumber1(), calculate.getNumber2());
         calculate.setResult(result);
