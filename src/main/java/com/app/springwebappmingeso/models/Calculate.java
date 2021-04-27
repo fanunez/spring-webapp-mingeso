@@ -36,11 +36,11 @@ public class Calculate {
     }
 
     public Integer calculateSum(Integer number1, Integer number2){
-        Integer result = number1 + number2;
+        this.result = number1 + number2;
         return result;
     }
     public Integer calculateSubtraction(Integer number1, Integer number2){
-        Integer result = number1 - number2;
+        this.result = number1 - number2;
         return result;
     }
 }
