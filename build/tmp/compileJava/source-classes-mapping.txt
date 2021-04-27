@@ -1,0 +1,6 @@
+com/app/springwebappmingeso/SpringWebappMingesoApplication.java
+ com.app.springwebappmingeso.SpringWebappMingesoApplication
+com/app/springwebappmingeso/models/Calculate.java
+ com.app.springwebappmingeso.models.Calculate
+com/app/springwebappmingeso/services/CalculateService.java
+ com.app.springwebappmingeso.services.CalculateService
