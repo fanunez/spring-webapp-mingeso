@@ -1,14 +1,11 @@
 pipeline {
 	agent any
 	stages {
-		stage('Deployment') {
-			steps {
-			    dir("/var/lib/jenkins/workspace/Mingeso Proyecto"){
-			        echo "Deploying Backend"
-			        sh './gradlew bootrun'
-			    }
-			}
-		}
+        stage('Init') {
+            steps {
+                echo "Init"
+            }
+        }
 		stage('SonarQube analysis') {
     			steps {
 				dir("/var/lib/jenkins/workspace/Mingeso Proyecto") { //nombre del proyecto en jenkins
@@ -31,10 +28,13 @@ pipeline {
 				}
 			}
 		}
-		stage('End') {
-			steps {
-				echo "End"
-			}
-		}
+		stage('Deployment') {
+            steps {
+                dir("/var/lib/jenkins/workspace/Mingeso Proyecto"){
+                    echo "Deploying Backend"
+                    sh './gradlew bootrun'
+                }
+            }
+        }
 	}
 }
