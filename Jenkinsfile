@@ -1,9 +1,23 @@
 pipeline {
 	agent any
+	tools{
+	    nodejs "NodeJS"
+    }
+	environment{
+	    CI = 'true'
+	}
 	stages {
-		stage('Inicio') {
+		stage('Deployment') {
 			steps {
-				echo "Inicio"
+			    dir("./App/client}"){
+			        echo "Installing Dependencies"
+                    sh 'npm install'
+			    }
+			    dir("/var/lib/jenkins/workspace/Mingeso Proyecto"){
+			        echo "Deploying Backend"
+			        sh 'gradlew bootrun'
+			    }
+				sh 'npm start'
 			}
 		}
 		stage('SonarQube analysis') {
@@ -18,10 +32,6 @@ pipeline {
   		}
 		stage('JUnit'){
 			steps {
-				dir("/var/lib/jenkins/workspace/Mingeso Proyecto/build/test-results/test") {
-					sh 'touch hola.xml'
-					sh 'rm *.xml'
-				}
 				catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                     			dir("/var/lib/jenkins/workspace/Mingeso Proyecto") {
 						sh './gradlew test'
@@ -32,9 +42,9 @@ pipeline {
 				}
 			}
 		}
-		stage('Fin') {
+		stage('End') {
 			steps {
-				echo "Fin"
+				echo "End"
 			}
 		}
 	}
