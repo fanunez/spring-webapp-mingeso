@@ -30,5 +30,12 @@ class CalculateTest {
         calculate.setResult(result);
         assertEquals(-3, calculate.getResult());
     }
+    @Test
+    void calculateSum_oneNumber_returnNumber() {
+        Calculate calculate = new Calculate(-1, 0, null);
+        Integer result = calculate.calculateSum(calculate.getNumber1(), calculate.getNumber2());
+        calculate.setResult(result);
+        assertEquals(-1, calculate.getResult());
+    }
 
 }

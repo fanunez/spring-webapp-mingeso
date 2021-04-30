@@ -1,11 +1,11 @@
 pipeline {
 	agent any
 	stages {
-		stage('Inicio') {
-			steps {
-				echo "Inicio"
-			}
-		}
+        stage('Init') {
+            steps {
+                echo "Init"
+            }
+        }
 		stage('SonarQube analysis') {
     			steps {
 				dir("/var/lib/jenkins/workspace/Mingeso Proyecto") { //nombre del proyecto en jenkins
@@ -18,24 +18,22 @@ pipeline {
   		}
 		stage('JUnit'){
 			steps {
-				dir("/var/lib/jenkins/workspace/Mingeso Proyecto/build/test-results/test") {
-					sh 'touch hola.xml'
-					sh 'rm *.xml'
-				}
 				catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                     			dir("/var/lib/jenkins/workspace/Mingeso Proyecto") {
 						sh './gradlew test'
 					}
                 		}
 				dir("/var/lib/jenkins/workspace/Mingeso Proyecto/build/test-results/test") {
+					touch 'test.xml'
+					sh 'rm --f test.xml'
 					junit '*.xml'
 				}
 			}
 		}
-		stage('Fin') {
-			steps {
-				echo "Fin"
-			}
-		}
+		stage('End') {
+            steps {
+                echo "Deploying Backend"
+            }
+        }
 	}
 }

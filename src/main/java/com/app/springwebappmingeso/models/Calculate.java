@@ -27,9 +27,7 @@ public class Calculate {
         this.number2 = number2;
     }
 
-    public Integer getResult() {
-        return result;
-    }
+    public Integer getResult() { return result; }
 
     public void setResult(Integer result) {
         this.result = result;
