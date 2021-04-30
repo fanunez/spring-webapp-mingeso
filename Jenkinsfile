@@ -9,7 +9,7 @@ pipeline {
 	stages {
 		stage('Deployment') {
 			steps {
-			    dir("./App/client}"){
+			    dir("./App/client"){
 			        echo "Installing Dependencies"
                     sh 'npm install'
 			    }
