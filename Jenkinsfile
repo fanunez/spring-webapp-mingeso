@@ -18,14 +18,16 @@ pipeline {
   		}
 		stage('JUnit'){
 			steps {
+			    dir("/var/lib/jenkins/workspace/Mingeso Proyecto/build/test-results/test") {
+                    sh 'touch test.xml'
+                    sh 'rm *.xml'
+                }
 				catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                     			dir("/var/lib/jenkins/workspace/Mingeso Proyecto") {
 						sh './gradlew test'
 					}
-                		}
+                }
 				dir("/var/lib/jenkins/workspace/Mingeso Proyecto/build/test-results/test") {
-					sh 'touch test.xml'
-					sh 'rm test.xml'
 					junit '*.xml'
 				}
 			}
