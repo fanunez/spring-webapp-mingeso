@@ -28,12 +28,9 @@ pipeline {
 				}
 			}
 		}
-		stage('Deployment') {
+		stage('End') {
             steps {
-                dir("/var/lib/jenkins/workspace/Mingeso Proyecto"){
-                    echo "Deploying Backend"
-                    sh './gradlew bootrun'
-                }
+                echo "Deploying Backend"
             }
         }
 	}
