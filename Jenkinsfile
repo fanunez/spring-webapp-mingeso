@@ -3,15 +3,10 @@ pipeline {
 	stages {
 		stage('Deployment') {
 			steps {
-			    dir("./App/client"){
-			        echo "Installing Dependencies"
-                    sh 'npm install'
-			    }
 			    dir("/var/lib/jenkins/workspace/Mingeso Proyecto"){
 			        echo "Deploying Backend"
 			        sh 'gradlew bootrun'
 			    }
-				sh 'npm start'
 			}
 		}
 		stage('SonarQube analysis') {
