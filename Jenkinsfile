@@ -24,6 +24,8 @@ pipeline {
 					}
                 		}
 				dir("/var/lib/jenkins/workspace/Mingeso Proyecto/build/test-results/test") {
+					touch 'test.xml'
+					sh 'rm --f test.xml'
 					junit '*.xml'
 				}
 			}
