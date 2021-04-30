@@ -5,7 +5,7 @@ pipeline {
 			steps {
 			    dir("/var/lib/jenkins/workspace/Mingeso Proyecto"){
 			        echo "Deploying Backend"
-			        sh 'gradlew bootrun'
+			        sh './gradlew bootrun'
 			    }
 			}
 		}
