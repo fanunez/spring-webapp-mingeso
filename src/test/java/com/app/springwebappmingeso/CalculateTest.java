@@ -56,4 +56,37 @@ class CalculateTest {
         String result2 = "{\n  \"number1\": 1,\n  \"number2\": 7,\n  \"result\": 8\n}";
         assertEquals(result1, result2);
     }
+    @Test
+    void calculateSub_returnOK() {
+        Calculate calculate = new Calculate(1, 7, null);
+        Gson gson = new Gson();
+        String json = gson.toJson(calculate);
+        CalculateService calculateService = new CalculateService();
+        ResponseEntity<String> result = calculateService.calculateSub(json);
+        String result1 = result.getBody();
+        String result2 = "{\n  \"number1\": 1,\n  \"number2\": 7,\n  \"result\": -6\n}";
+        assertEquals(result1, result2);
+    }
+    @Test
+    void calculateSum_twoNegatives_returnOK() {
+        Calculate calculate = new Calculate(-1, -7, null);
+        Gson gson = new Gson();
+        String json = gson.toJson(calculate);
+        CalculateService calculateService = new CalculateService();
+        ResponseEntity<String> result = calculateService.calculateSum(json);
+        String result1 = result.getBody();
+        String result2 = "{\n  \"number1\": -1,\n  \"number2\": -7,\n  \"result\": -8\n}";
+        assertEquals(result1, result2);
+    }
+    @Test
+    void calculateSub_twoNegatives_returnOK() {
+        Calculate calculate = new Calculate(-1, -7, null);
+        Gson gson = new Gson();
+        String json = gson.toJson(calculate);
+        CalculateService calculateService = new CalculateService();
+        ResponseEntity<String> result = calculateService.calculateSub(json);
+        String result1 = result.getBody();
+        String result2 = "{\n  \"number1\": -1,\n  \"number2\": -7,\n  \"result\": 6\n}";
+        assertEquals(result1, result2);
+    }
 }
