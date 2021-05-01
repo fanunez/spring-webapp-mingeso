@@ -89,4 +89,16 @@ class CalculateTest {
         String result2 = "{\n  \"number1\": -1,\n  \"number2\": -7,\n  \"result\": 6\n}";
         assertEquals(result1, result2);
     }
+    @Test
+    void calculateSub_oneNULL_returnOK() {
+        Calculate calculate = new Calculate(-1, null, null);
+        Gson gson = new Gson();
+        String json = gson.toJson(calculate);
+        CalculateService calculateService = new CalculateService();
+        ResponseEntity<String> result = calculateService.calculateSub(json);
+        String result1 = result.getBody();
+        //String result2 = "{\n  \"number1\": -1,\n  \"number2\": -7,\n  \"result\": 6\n}";
+        assertEquals(result1, "\"Algo ocurrio mal :(\"");
+    }
+
 }
