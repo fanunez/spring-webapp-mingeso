@@ -1,8 +1,5 @@
 pipeline {
 	agent any
-	environment{
-	    scannerHome = tool 'SonarScanner 4.0';
-	}
 	stages {
         stage('Init') {
             steps {
@@ -16,12 +13,6 @@ pipeline {
 					withSonarQubeEnv('sonarqube') { // Will pick the global server connection you have configured
 						sh 'chmod +x ./gradlew'
 						sh './gradlew sonarqube'
-                    }
-				}
-				echo "sonarqube with Frontend"
-				dir("/var/lib/jenkins/workspace/MingesoProyectFrontend"){
-				    withSonarQubeEnv('sonarqube') { // Will pick the global server connection you have configured
-                        sh "${scannerHome}/bin/sonar-scanner"
                     }
 				}
 			}
