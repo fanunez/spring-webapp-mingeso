@@ -13,7 +13,7 @@ public class CalculateService {
 
     private final Gson gson;
 
-    CalculateService(){
+    public CalculateService(){
         this.gson = new GsonBuilder().setPrettyPrinting().create();
     }
     @PostMapping("/sum")
