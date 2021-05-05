@@ -14,7 +14,7 @@ public class Calculate {
     public Integer getNumber1() {
         return number1;
     }
-
+    /* miercoles 5 de mayo*/
     public void setNumber1(Integer number1) {
         this.number1 = number1;
     }
