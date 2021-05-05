@@ -13,19 +13,19 @@ public class CalculateService {
 
     private final Gson gson;
 
-    CalculateService(){
+    public CalculateService(){
         this.gson = new GsonBuilder().setPrettyPrinting().create();
     }
     @PostMapping("/sum")
     public ResponseEntity<String> calculateSum(@RequestBody String request){
         try {
-            Calculate calculate = gson.fromJson(request, Calculate.class);
+            var calculate = gson.fromJson(request, Calculate.class);
             Integer result = calculate.calculateSum(calculate.getNumber1(), calculate.getNumber2());
             calculate.setResult(result);
             return new ResponseEntity<>(gson.toJson(calculate), HttpStatus.OK);
 
         } catch ( Exception e ) {
-            System.out.println( e ); // capturar error server-side
+            System.err.println( e ); // capturar error server-side
             return new ResponseEntity<>( gson.toJson("Algo ocurrio mal :("), HttpStatus.BAD_REQUEST );
         }
 
@@ -40,7 +40,7 @@ public class CalculateService {
             return new ResponseEntity<>(gson.toJson(subtraction), HttpStatus.OK);
 
         } catch ( Exception e ) {
-            System.out.println( e ); // capturar error server-side
+            System.err.println( e ); // capturar error server-side
             return new ResponseEntity<>( gson.toJson("Algo ocurrio mal :("), HttpStatus.BAD_REQUEST );
         }
 

@@ -27,20 +27,18 @@ public class Calculate {
         this.number2 = number2;
     }
 
-    public Integer getResult() {
-        return result;
-    }
+    public Integer getResult() { return result; }
 
     public void setResult(Integer result) {
         this.result = result;
     }
 
     public Integer calculateSum(Integer number1, Integer number2){
-        Integer result = number1 + number2;
+        this.result = number1 + number2;
         return result;
     }
     public Integer calculateSubtraction(Integer number1, Integer number2){
-        Integer result = number1 - number2;
+        this.result = number1 - number2;
         return result;
     }
 }
